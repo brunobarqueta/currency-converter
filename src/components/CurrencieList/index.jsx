@@ -4,7 +4,8 @@ import './CurrencieList.css'
 const CurrencieList = (props) => {
 
     const [currencies, setCurrencies] = useState([]);
-
+    const [currencieText, setCurrencieText] = useState("");
+    
     useEffect(async () => {
         const response = await fetch("https://free.currconv.com/api/v7/currencies?apiKey=f4b49b3bb7b8da2dfe58");
         const data = await response.json();
@@ -21,15 +22,20 @@ const CurrencieList = (props) => {
         setCurrencies(arrCurrencies);
     }, [])
 
+    const handleSelectChange = (event) => {
+        setCurrencieText(event.target.value);
+    }
+
     return (
         <div className="currencies">
-            <select>
+            <select name="selectCurrencies" id="selectCurrencies" onChange={handleSelectChange}>
                 {
                     currencies.map((currency) => (
-                        <option key={currency.id} value={currency.id}>{currency.id}</option>
+                        <option key={currency.id} value={currency.currencyName}>{currency.id}</option>
                     ))
                 }
             </select>
+            <input value={currencieText} readOnly/>
         </div>
     )
 }
