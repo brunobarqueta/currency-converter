@@ -1,5 +1,8 @@
 .currencies select {
-    width: 150px;
-    text-align: center;
+    width: 400px;
+    height: 55px;
     margin: 0 10px;
+    font-family: 'Montserrat';
+    font-size: 22px;
+    text-align: center;
 }

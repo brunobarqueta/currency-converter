@@ -1,4 +1,9 @@
 .amount input {
     width: 150px;
+    height: 50px;
     margin: 0 10px;
+    text-align: center;
+    font-family: 'Montserrat';
+    font-size: 22px;
+    text-align: center;
 }
