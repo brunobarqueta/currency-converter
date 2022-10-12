@@ -12,8 +12,8 @@ const App = () => {
   const [currencyRateTo, setCurrencyRateTo] = useState(0);
   const [currencies, setCurrencies] = useState([]);
 
-  // const apiKey = "f4b49b3bb7b8da2dfe58";
-  const apiKey = "3ec1190edd85270ed436";
+  const apiKey = "f4b49b3bb7b8da2dfe58";
+  // const apiKey = "3ec1190edd85270ed436";
   // Get currency list
   useEffect(async () => {
     const response = await fetch(`https://free.currconv.com/api/v7/currencies?apiKey=${apiKey}`);
