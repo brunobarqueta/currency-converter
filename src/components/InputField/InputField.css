@@ -7,3 +7,10 @@
     font-size: 22px;
     text-align: center;
 }
+
+.error {
+    font-size: 15px;
+    color: red;
+    transition: opacity 0.5s ease;
+    position: absolute
+}
