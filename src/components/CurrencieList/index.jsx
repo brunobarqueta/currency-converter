@@ -1,4 +1,4 @@
-import react, { useState, useEffect } from "react"
+import { useEffect } from "react"
 import './CurrencieList.css'
 
 const CurrencieList = (props) => {
@@ -6,9 +6,12 @@ const CurrencieList = (props) => {
 
     const changeCurrency = (event) => {
         props.setValue(event.target[event.target.selectedIndex].value)
-        console.log(event.target[event.target.selectedIndex].value)
     }
     
+    useEffect(() => {
+        props.setValue(props.value)
+    }, [])
+
     return (
         <div className="currencies">
             <select name="selectCurrencies" id="selectCurrencies" value={props.value} onChange={changeCurrency}>
