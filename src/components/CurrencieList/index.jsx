@@ -6,11 +6,12 @@ const CurrencieList = (props) => {
 
     const changeCurrency = (event) => {
         props.setValue(event.target[event.target.selectedIndex].value)
+        console.log(event.target[event.target.selectedIndex].value)
     }
     
     return (
         <div className="currencies">
-            <select name="selectCurrencies" id="selectCurrencies" onChange={changeCurrency}>
+            <select name="selectCurrencies" id="selectCurrencies" value={props.value} onChange={changeCurrency}>
                 {
                     currencies.map((currency) => (
                         <option key={currency.id} value={currency.id}>{currency.id} - {currency.currencyName}</option>

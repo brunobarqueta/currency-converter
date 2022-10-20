@@ -31,9 +31,8 @@ const App = () => {
         currencySymbol: results[x].currencySymbol
       })
     }
-    setCurrencyFrom(arrCurrencies[0].id);
-    setCurrencyTo(arrCurrencies[0].id);
     setCurrencies(arrCurrencies);
+    setValueFrom("100")
   }, [])
 
   // Get conversion rate
@@ -76,6 +75,7 @@ const App = () => {
           setText={value => setValueFrom(value)}>
         </InputField>
         <CurrencieList
+          value="BRL"
           currencies={currencies}
           setValue={value => setCurrencyFrom(value)}>
         </CurrencieList>
@@ -89,6 +89,7 @@ const App = () => {
           >
         </InputField>
         <CurrencieList
+          value="USD"
           currencies={currencies}
           setValue={value => setCurrencyTo(value)}>
         </CurrencieList>
