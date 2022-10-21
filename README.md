@@ -3,8 +3,9 @@ Currency converter written in React.js, using Vite, and Vercel for deploy: https
 
 To run:
 - npm install
-- npm rum dev
+- npm run dev
+Or access the link above.
 
 Next Features:
-- Swap currencies (the first one will become the second and vice versa)
-- Searchable select
+- Swap currencies (the first one will become the second and vice versa);
+- Searchable select;
