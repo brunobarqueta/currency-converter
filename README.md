@@ -4,6 +4,7 @@ Currency converter written in React.js, using Vite, and Vercel for deploy: https
 To run:
 - npm install
 - npm run dev
+
 Or access the link above.
 
 Next Features:
