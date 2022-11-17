@@ -16,7 +16,7 @@ const App = () => {
   const [auxValueTo, setAuxValueTo] = useState("");
 
 
-  const apiKey = "56bbfdc818b8524b4121";
+  const apiKey = "9886bf66fc546ad774a1";
 
   // Get currency list
   useEffect(async () => {
@@ -81,6 +81,7 @@ const App = () => {
         </CurrencieList>
       </div>
       <h2>to</h2>
+      <button>Swap</button>
       <div className="input-group">
         <InputField
           value={valueTo}
