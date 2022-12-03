@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react"
+import React, { useState, useEffect } from "react"
 import './App.css'
 import CurrencieList from "./components/CurrencieList";
 import InputField from "./components/InputField";
@@ -6,8 +6,8 @@ import InputField from "./components/InputField";
 const App = () => {
   const [valueFrom, setValueFrom] = useState("100");
   const [valueTo, setValueTo] = useState("0");
-  const [currencyFrom, setCurrencyFrom] = useState("");
-  const [currencyTo, setCurrencyTo] = useState("");
+  const [currencyFrom, setCurrencyFrom] = useState("BRL");
+  const [currencyTo, setCurrencyTo] = useState("USD");
   const [currencyRateFrom, setCurrencyRateFrom] = useState("");
   const [currencyRateTo, setCurrencyRateTo] = useState("");
   const [currencies, setCurrencies] = useState([]);
@@ -16,7 +16,7 @@ const App = () => {
   const [auxValueTo, setAuxValueTo] = useState("");
 
 
-  const apiKey = "56bbfdc818b8524b4121";
+  const apiKey = "9886bf66fc546ad774a1";
 
   // Get currency list
   useEffect(async () => {
@@ -31,9 +31,8 @@ const App = () => {
         currencySymbol: results[x].currencySymbol
       })
     }
-    setCurrencyFrom(arrCurrencies[0].id);
-    setCurrencyTo(arrCurrencies[0].id);
     setCurrencies(arrCurrencies);
+    setValueFrom("100");
   }, [])
 
   // Get conversion rate
@@ -68,30 +67,35 @@ const App = () => {
   return (
     <>
       <h1>Currency Converter</h1>
-      <h2>from</h2>
-      <div className="input-group">
-        <InputField
-          value={valueFrom}
-          setValue={value => setAuxValueFrom(value)}
-          setText={value => setValueFrom(value)}>
-        </InputField>
-        <CurrencieList
-          currencies={currencies}
-          setValue={value => setCurrencyFrom(value)}>
-        </CurrencieList>
-      </div>
-      <h2>to</h2>
-      <div className="input-group">
-        <InputField
-          value={valueTo}
-          setValue={value => setAuxValueTo(value)}
-          setText={value => setValueTo(value)}
+      <div className="container">
+        <h2>from</h2>
+        <div className="input-group">
+          <InputField
+            value={valueFrom}
+            setValue={value => setAuxValueFrom(value)}
+            setText={value => setValueFrom(value)}>
+          </InputField>
+          <CurrencieList
+            defaultValue={currencyFrom}
+            currencies={currencies}
+            setValue={value => setCurrencyFrom(value)}>
+          </CurrencieList>
+        </div>
+        <h2>to</h2>
+        
+        <div className="input-group">
+          <InputField
+            value={valueTo}
+            setValue={value => setAuxValueTo(value)}
+            setText={value => setValueTo(value)}
           >
-        </InputField>
-        <CurrencieList
-          currencies={currencies}
-          setValue={value => setCurrencyTo(value)}>
-        </CurrencieList>
+          </InputField>
+          <CurrencieList
+            defaultValue={currencyTo}
+            currencies={currencies}
+            setValue={value => setCurrencyTo(value)}>
+          </CurrencieList>
+        </div>
       </div>
     </>
   )
