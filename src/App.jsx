@@ -15,14 +15,15 @@ const App = () => {
   const [auxValueFrom, setAuxValueFrom] = useState("");
   const [auxValueTo, setAuxValueTo] = useState("");
 
-
   const apiKey = "9886bf66fc546ad774a1";
 
+  const [error, setError] = useState("")
   // Get currency list
   useEffect(async () => {
     const response = await fetch(`https://free.currconv.com/api/v7/currencies?apiKey=${apiKey}`);
     const data = await response.json();
     const results = data.results;
+    data.error != undefined ? setError(data.error) : null;
     const arrCurrencies = [];
     for (var x in results) {
       arrCurrencies.push({
@@ -67,6 +68,7 @@ const App = () => {
   return (
     <>
       <h1>Currency Converter</h1>
+      {error ? <p className="api-error">{error}</p> : null }
       <div className="container">
         <h2>from</h2>
         <div className="input-group">
