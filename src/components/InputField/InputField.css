@@ -6,6 +6,11 @@
     font-family: 'Montserrat';
     font-size: 22px;
     text-align: center;
+    color: white;
+    background: transparent;
+    border-radius: 50px;
+    border: 0;
+    background: var(--gradient);
 }
 
 .error {
@@ -13,4 +18,9 @@
     color: red;
     transition: opacity 0.5s ease;
     position: absolute
+}
+
+.api-error {
+    color: red;
+    font-size: 30px;
 }

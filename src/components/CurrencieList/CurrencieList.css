@@ -1,3 +1,7 @@
+:root {
+    --gradient: linear-gradient(to right, #ccf9ff, #7ce8ff, #55d0ff, #00acdf, #0080bf)
+}
+
 .currencies select {
     width: 400px;
     height: 55px;
@@ -5,4 +9,11 @@
     font-family: 'Montserrat';
     font-size: 22px;
     text-align: center;
+    color: white;
+    background: transparent;
+    border-radius: 50px;
+}
+
+select option {
+    background-color: rgb(32, 32, 32);
 }

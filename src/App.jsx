@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useCallback } from "react"
-import './App.css'
+import React, { useState, useEffect } from "react"
+import './styles/global.css'
 import CurrencieList from "./components/CurrencieList";
 import InputField from "./components/InputField";
 
 const App = () => {
   const [valueFrom, setValueFrom] = useState("100");
   const [valueTo, setValueTo] = useState("0");
-  const [currencyFrom, setCurrencyFrom] = useState("");
-  const [currencyTo, setCurrencyTo] = useState("");
+  const [currencyFrom, setCurrencyFrom] = useState("BRL");
+  const [currencyTo, setCurrencyTo] = useState("USD");
   const [currencyRateFrom, setCurrencyRateFrom] = useState("");
   const [currencyRateTo, setCurrencyRateTo] = useState("");
   const [currencies, setCurrencies] = useState([]);
@@ -15,29 +15,29 @@ const App = () => {
   const [auxValueFrom, setAuxValueFrom] = useState("");
   const [auxValueTo, setAuxValueTo] = useState("");
 
-
-  const apiKey = "9886bf66fc546ad774a1";
+  const apiKey = "c7H0cm3rEpxYFUqd6HZQ7HSoX5wlZL1xKSpZvQMg";
 
   // Get currency list
   useEffect(async () => {
-    const response = await fetch(`https://free.currconv.com/api/v7/currencies?apiKey=${apiKey}`);
+    const response = await fetch(`https://api.freecurrencyapi.com/v1/currencies?apikey=${apiKey}`);
     const data = await response.json();
-    const results = data.results;
+    const results = data.data;
+    data.error != undefined ? setError(data.error) : null;
     const arrCurrencies = [];
     for (var x in results) {
       arrCurrencies.push({
-        currencyName: results[x].currencyName,
-        id: results[x].id,
-        currencySymbol: results[x].currencySymbol
+        name: results[x].name,
+        symbol: results[x].symbol,
+        code: results[x].code
       })
     }
     setCurrencies(arrCurrencies);
-    setValueFrom("100")
   }, [])
 
   // Get conversion rate
   useEffect(async () => {
-    const response = await fetch(`https://free.currconv.com/api/v7/convert?q=${currencyFrom}_${currencyTo},${currencyTo}_${currencyFrom}&compact=ultra&apiKey=${apiKey}`);
+    const response = await fetch(`https://api.freecurrencyapi.com/v1/latest?apiKey=${apiKey}&currencies=EUR%2CCAD`);
+    // const response = await fetch(`https://api.freecurrencyapi.com/v1/latest?apiKey=${apiKey}&base_currency=${currencyFrom}&currencies=${currencyTo}`);
     const data = await response.json();
     const results = Object.values(data)
     if (results.length > 1) {
@@ -75,13 +75,11 @@ const App = () => {
           setText={value => setValueFrom(value)}>
         </InputField>
         <CurrencieList
-          value="BRL"
           currencies={currencies}
           setValue={value => setCurrencyFrom(value)}>
         </CurrencieList>
       </div>
       <h2>to</h2>
-      <button>Swap</button>
       <div className="input-group">
         <InputField
           value={valueTo}
@@ -90,7 +88,6 @@ const App = () => {
           >
         </InputField>
         <CurrencieList
-          value="USD"
           currencies={currencies}
           setValue={value => setCurrencyTo(value)}>
         </CurrencieList>
