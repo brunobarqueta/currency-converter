@@ -1,5 +1,5 @@
-
-/* html {
+/* 
+ html {
     background-color: rgb(32, 32, 32);
 }
 
@@ -7,7 +7,7 @@ body {
     font-family: 'Montserrat';
     font-size: 22px;
     text-align: center;
-}
+} */
 
 .input-group {
     display: flex;
@@ -20,9 +20,9 @@ h2 {
     margin:0;
     margin-right: 42px;
 }
-button {
+/* button {
     margin:0;
     padding: 10px 10px;
     display: inline-block;
     vertical-align:top;
-} */
+}  */

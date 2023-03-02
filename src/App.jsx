@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
-import './styles/global.css'
 import CurrencieList from "./components/CurrencieList";
 import InputField from "./components/InputField";
+import './styles/global.css'
 
 const App = () => {
   const [valueFrom, setValueFrom] = useState("100");
@@ -66,9 +66,9 @@ const App = () => {
 
   return (
     <>
-      <h1>Currency Converter</h1>
-      <h2>from</h2>
-      <div className="input-group">
+      <h1 class="flex justify-center mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl mt-24"><span class="text-transparent bg-clip-text bg-gradient-to-r to-sky-600 from-sky-400">Currency</span> Converter.</h1>
+      <h2 className="font-medium text-lg flex justify-center mt-16">From</h2>
+      <div className="flex flex-row justify-center mt-8">
         <InputField
           value={valueFrom}
           setValue={value => setAuxValueFrom(value)}
@@ -79,8 +79,8 @@ const App = () => {
           setValue={value => setCurrencyFrom(value)}>
         </CurrencieList>
       </div>
-      <h2>to</h2>
-      <div className="input-group">
+      <h2 className="font-medium text-lg flex justify-center mt-8">To</h2>
+      <div className="flex flex-row justify-center mt-8">
         <InputField
           value={valueTo}
           setValue={value => setAuxValueTo(value)}
